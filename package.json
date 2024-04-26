@@ -1,7 +1,7 @@
 {
   "name": "deepspeechelectron",
   "productName": "deepspeechelectron",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -52,7 +52,6 @@
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "update-electron-app": "^3.0.0"
+    "react-dom": "^18.2.0"
   }
 }
