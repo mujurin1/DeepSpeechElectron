@@ -6,9 +6,9 @@
   "main": ".webpack/main",
   "scripts": {
     "start": "chcp 65001 && electron-forge start",
+    "publish": "electron-forge publish",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-webpack": "^7.4.0",
+    "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
@@ -50,6 +51,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "update-electron-app": "^3.0.0"
   }
 }
