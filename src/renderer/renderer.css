@@ -1,0 +1,85 @@
+body {
+  background-color: #353b3b;
+  color: #ebebebe6;
+}
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #c2c2c2;
+  }
+}
+
+.box {
+  border: 2px solid #2caae5;
+  border-radius: 5px;
+  position: relative;
+  margin: 1em 0 1em 0;
+
+  &>h3 {
+    text-align: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -1.8em;
+
+    &>span {
+      padding: 0 .5em;
+      background-color: #353b3b;
+      color: #27abe9;
+    }
+  }
+
+  &>.inner {
+    padding: 1.2em .5em .5em;
+  }
+}
+
+.onSound::after {
+  content: "＠";
+  color: red;
+}
+
+
+.connect-on::after {
+  content: "有効";
+  font-weight: bold;
+  color: green;
+}
+
+.connect-off::after {
+  content: "無効";
+  font-weight: bold;
+  color: red;
+}
+
+.disconnect::after {
+  content: "未接続";
+  font-weight: bold;
+  color: red;
+}
+
+.connecting::after {
+  content: "接続試行中";
+  font-weight: bold;
+  color: gray;
+  /* color: LimeGreen; */
+}
+
+.connected::after {
+  content: "接続中";
+  font-weight: bold;
+  color: green;
+}
+
+.reject::after {
+  content: "接続失敗";
+  font-weight: bold;
+  color: red;
+}
+
+.error {
+  color: red;
+}
