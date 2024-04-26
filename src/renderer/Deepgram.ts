@@ -1,6 +1,7 @@
 import { DeepgramResponse, PrerecordedSchema, SyncPrerecordedResponse } from "@deepgram/sdk";
 import { useEffect, useState } from "react";
 import { Trigger } from "./Trigger";
+import { sendYukakone } from "./Yukakone";
 
 let inited = false;
 let _apiKey = "";
@@ -15,7 +16,13 @@ const onDeepgramResponse = new Trigger<[DeepgramResponse<SyncPrerecordedResponse
 onChange.add((apiKey, params) => { _apiKey = apiKey; _params = params; });
 window.electronAPI.getSotreData()
   .then(store => onChange.fire(store.deepgramApiKey, store.deepgramParams));
-window.electronAPI.onDeepgramResponse(response => onDeepgramResponse.fire(response));
+window.electronAPI.onDeepgramResponse(response => {
+  const text: string = response.result?.results?.channels[0]?.alternatives[0]?.transcript;
+  if (text != null && text !== "") sendYukakone(text);
+
+  responseAll.push(response);
+  onDeepgramResponse.fire(response);
+});
 
 export function useDeepgram() {
   const [responses, setResponses] = useState<DeepgramResponse<SyncPrerecordedResponse>[]>([]);

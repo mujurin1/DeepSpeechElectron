@@ -83,7 +83,7 @@ export function Main() {
         認識結果 {deepgramState.responses.length}
         <div>
           {
-            deepgramState.responses.map((response, i) => {
+            deepgramState.responses.reverse().map((response, i) => {
               if (response.error != null) {
                 return (
                   <details key={i}>
@@ -93,7 +93,8 @@ export function Main() {
                 );
               }
 
-              const text: string = response.result.results.channels[0].alternatives[0].transcript ?? "[#無し]";
+              let text: string = response.result.results.channels[0].alternatives[0].transcript;
+              if (text === "") text = "[#無し] (「あー」や「うー」のみの発音をDeepgramは文字起こししません）";
               return (
                 <details key={i} style={{ whiteSpace: "pre-wrap" }}>
                   <summary>{text}</summary>

@@ -5,7 +5,6 @@ import Store from "electron-store";
 
 const store = new Store();
 const storeKeys = {
-  appVersion: "app-version",
   deepgramKey: "deepgram-key",
   deepgramParams: "deepgram-params",
 } as const;
@@ -13,7 +12,6 @@ const storeKeys = {
 export const state = {
   deepgram: null as DeepgramClient,
   store: {
-    appVersion: (store.get(storeKeys.appVersion) ?? "1.0") as string,
     deepgramApiKey: (store.get(storeKeys.deepgramKey) ?? "") as string,
     deepgramParams: (store.get(storeKeys.deepgramParams) ?? {
       model: "nova-2",
@@ -25,7 +23,7 @@ export type StoreState = typeof state.store;
 
 
 app.whenReady().then(() => {
-  ipcMain.on("get-store", () => state.store);
+  ipcMain.handle('get-store', () => state.store);
   ipcMain.on("create-deepgram-client", handleCreateDeepgramClient);
   ipcMain.on("update-deepgram-params", handleUpdateDeepgramParams);
   ipcMain.on('post-audio', handlePostAudio);
@@ -66,18 +64,13 @@ function flushResolvedEntries() {
   while (queue[0] != null) {
     if (queue[0].data != null) {
       const { response, event } = queue.shift().data;
-      const { result, error } = response;
 
-      if (error) console.log("録音: Error:", error);
-
-      const text: string = result?.results?.channels[0]?.alternatives[0]?.transcript;
-      console.log("録音: ", text);
       const win = getWindow(event);
       win.webContents.send('deepgram-response', response);
     } else if (queue[0].error != null) {
       const error = queue.shift().error;
 
-      // TODO error send to renderer
+      // TODO: error send to renderer
       console.log(`Deepgram Response Error: ${error}`);
     } else
       break;

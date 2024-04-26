@@ -3,7 +3,7 @@
 
 import { DeepgramResponse, PrerecordedSchema, SyncPrerecordedResponse } from "@deepgram/sdk";
 import { contextBridge, ipcRenderer } from "electron";
-// import type { StoreState } from "./main/main";
+import type { StoreState } from "./main/main";
 
 declare global {
   interface Window {

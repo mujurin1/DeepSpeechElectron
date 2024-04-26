@@ -18,7 +18,7 @@ export function useYukakone() {
     };
   }, []);
 
-  return { connected, connect, disconnect, send };
+  return { connected, connect, disconnect };
 }
 
 function connect(port: number) {
@@ -34,10 +34,12 @@ function connect(port: number) {
 
 function disconnect() {
   if (ws == null || ws.readyState !== WebSocket.OPEN) return;
-  ws.close();
+  // WebSocket は実際には閉じない不具合がある？
+  ws.close(1000);
+  ws = null;
 }
 
-function send(text: string) {
-  if (ws.readyState !== WebSocket.OPEN) return;
+export function sendYukakone(text: string) {
+  if (ws == null || ws.readyState !== WebSocket.OPEN) return;
   ws.send(text);
 }
