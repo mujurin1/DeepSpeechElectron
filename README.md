@@ -1,5 +1,10 @@
 # DeepSpeechElectron
 
+ダウンロードは
+[コチラ](https://github.com/mujurin1/DeepSpeechElectron/releases)
+から一番上の「Setup.exe」を選択してください
+
+
 このアプリは
 [ゆかりねっと](https://nmori.github.io/yncneo-Docs)
 へ喋った文字を送信するための Windows 専用アプリです
