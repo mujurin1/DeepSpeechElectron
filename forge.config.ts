@@ -17,11 +17,12 @@ const config: ForgeConfig = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'github-user-name',
-          name: 'github-repo-name'
+          owner: 'mujurin1',
+          name: 'DeepSpeechElectron'
         },
         prerelease: false,
-        draft: true
+        draft: true,
+        token: process.env.GITHUB_TOKEN,
       }
     }
   ],

@@ -1,12 +1,12 @@
 {
   "name": "deepspeechelectron",
   "productName": "deepspeechelectron",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
     "start": "chcp 65001 && electron-forge start",
-    "publish": "electron-forge publish",
+    "publish": "env-cmd electron-forge publish",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "lint": "eslint --ext .ts,.tsx ."
@@ -30,6 +30,7 @@
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.11.0",
     "electron": "30.0.1",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "fork-ts-checker-webpack-plugin": "^7.3.0",
