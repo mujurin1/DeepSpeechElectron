@@ -18,7 +18,7 @@ export function Main() {
 
   return (
     <div>
-      <Box title="DeepSpeechElectron v0.2">
+      <Box title="DeepSpeechElectron v1.0">
         <div>
           <div style={{ display: "flex", marginBottom: 10 }} >
             <button
